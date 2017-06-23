@@ -499,7 +499,7 @@ class MG_Settings_API {
             $form = $settings[$key];
             ?>
 
-            <div id="<?php echo $this->tab; ?>" class="group">
+            <div id="<?php echo $this->page; ?>" class="group">
                 <form method="post" action="options.php">
                     <?php
                     do_action( 'mg_form_top_' . $this->page, $form );
