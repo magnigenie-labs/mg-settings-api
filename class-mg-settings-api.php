@@ -41,8 +41,26 @@ class MG_Settings_API {
         add_action( 'admin_init',                   array( $this, 'admin_init' ) );
         add_action( 'admin_menu',                   array( $this, 'admin_menu' ) );
         add_action( 'admin_enqueue_scripts',        array( $this, 'admin_enqueue_scripts' ) );
-    }
+        add_action( 'admin_notices',                array( $this, 'mg_setting_notices' ) );
 
+    }
+     /**
+    *
+    *Display notictification on save or update settings
+    */
+    function mg_setting_notices(){
+        if ( ! isset( $_GET['settings-updated'] ) ) {
+            return;
+        }
+       ?>
+       <div id="setting-error-settings_updated" class="updated settings-error notice is-dismissible"> 
+            <p><strong>Settings saved.</strong></p>
+            <button type="button" class="notice-dismiss">
+                <span class="screen-reader-text">Dismiss this notice.</span>
+            </button>
+        </div>
+       <?php
+    } 
     /**
      * Initialize and registers the settings sections and fileds to WordPress
      * This function gets the initiated settings sections and fields. Then
